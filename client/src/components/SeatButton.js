@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Container, ListGroup, ListGroupItem, Button, ButtonGroup } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
 
 class SeatButton extends Component {
     state = {
         seats: [
-            {seat:"A", row:1, class:"First", occupied:false },
-            {seat:"B", row:1, class:"First", occupied:false },
-            {seat:"D", row:1, class:"First", occupied:true },
-            {seat:"E", row:1, class:"First", occupied:false },
+            {id:uuid(), seat:"A", row:1, class:"First", occupied:false },
+            {id:uuid(), seat:"B", row:1, class:"First", occupied:false },
+            {id:uuid(), seat:"D", row:1, class:"First", occupied:true },
+            {id:uuid(), seat:"E", row:1, class:"First", occupied:false },
         ]
     }
 
@@ -17,20 +17,16 @@ class SeatButton extends Component {
         const { seats } = this.state;
         return(
             <Container>
-                <ListGroup>
-                    <TransitionGroup className="seat-list">
-                        {seats.map(({ seat, row }) => (
-                            <ListGroupItem>
-                                <Button
-                                    className="select"
-                                    color="danger"
-                                    size="sm"
-                                >&times;</Button>
-                                {seat}
-                            </ListGroupItem>
-                        ))}
-                    </TransitionGroup>
-                </ListGroup>
+                
+                    {seats.map(({ seat, row, occupied }) => (
+                        <Button
+                            className="select"
+                            size="lg"
+                            color={occupied ? "primary" : "secondary"}
+                            
+                        >{seat}</Button>
+                    ))}
+                
             </Container>
         )
     }

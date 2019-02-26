@@ -1,0 +1,29 @@
+{
+  "name": "seatSelector",
+  "version": "1.0.0",
+  "description": "select a seat using react",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctaylr13/seatSelector.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ctaylr13/seatSelector/issues"
+  },
+  "homepage": "https://github.com/ctaylr13/seatSelector#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.15"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

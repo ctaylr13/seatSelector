@@ -9,7 +9,7 @@ class SeatButton extends Component {
         return(
             <Button
                 className="select"
-                size="lg"
+                size="md"
                 color={occupied ? "primary" : "secondary"}
                 disabled={occupied ? true : false}
                 style={{marginRight: margin ? 10 : 0}}

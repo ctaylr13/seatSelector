@@ -61,6 +61,7 @@ class App extends Component {
           }
         } 
         finalArray.push(tempArray);
+        console.log("final array", finalArray);
         this.setState({
           seatRow: finalArray
         });

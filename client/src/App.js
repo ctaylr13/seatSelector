@@ -37,7 +37,7 @@ class App extends Component {
           {id:uuid(), seat:"D", row:2, class:"First", occupied:true },
           {id:uuid(), seat:"E", row:2, class:"First", occupied:false }
       ]],
-      seatRow: []
+      seatRow: [],
     };
   }
 

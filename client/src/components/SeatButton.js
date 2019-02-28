@@ -6,6 +6,7 @@ import uuid from 'uuid';
 class SeatButton extends Component {
      constructor(props) {
         super(props);
+    }
     
     state = {
         selected: false,

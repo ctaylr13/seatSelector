@@ -69,7 +69,7 @@ class App extends Component {
           size="lg" 
           color="danger"
           disabled="true">Selected</Button>
-        <h2></h2>
+        <br></br>
         {this.state.seatRow.map((row) => (
           <SeatRow row={row} deactivateSeats={this.deactivateSeats.bind(this)}/>
         ))}

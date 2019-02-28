@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Button, ButtonGroup } from 'reactstrap';
+import { Button } from 'reactstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import './App.css';
-import SeatButton from "./components/SeatButton";
 import SeatRow from "./components/SeatRow";
-import uuid from 'uuid';
+
 
 
 class App extends Component {
@@ -44,7 +43,6 @@ class App extends Component {
           }
         } 
         finalArray.push(tempArray);
-        console.log("final array", finalArray);
         this.setState({
           seatRow: finalArray
         });
@@ -60,15 +58,15 @@ class App extends Component {
         <Button
           size="lg" 
           color="secondary"
-          disabled="true">Available</Button>
+          disabled={true}>Available</Button>
         <Button
           size="lg" 
           color="primary"
-          disabled="true">Occupied</Button>
+          disabled={true}>Occupied</Button>
           <Button
           size="lg" 
           color="danger"
-          disabled="true">Selected</Button>
+          disabled={true}>Selected</Button>
         <br></br>
         {this.state.seatRow.map((row) => (
           <SeatRow row={row} deactivateSeats={this.deactivateSeats.bind(this)}/>

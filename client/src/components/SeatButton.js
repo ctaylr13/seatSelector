@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Button, ButtonGroup } from 'reactstrap';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import uuid from 'uuid';
+import { Button } from 'reactstrap';
+
+
 
 class SeatButton extends Component {
-     constructor(props) {
-        super(props);
-    }
-    
     state = {
         selected: false,
         disabled: false
@@ -15,7 +11,6 @@ class SeatButton extends Component {
 
 
     clicked = () => {
-        console.log("clicked yo");
         this.setState({
             selected: !this.state.Selected,
         })
@@ -34,7 +29,6 @@ class SeatButton extends Component {
     render() {
         const { seat, occupied, margin, row, deactivateSeats } = this.props; 
         const { selected } = this.state;
-        console.log("selected",this.state.selected);
         var seatNum = seat + row.toString();
 
         return(
@@ -45,6 +39,7 @@ class SeatButton extends Component {
                 style={{marginRight: margin ? 15 : 0}}
                 onClick={selected ? this.unclicked : this.clicked}
                 active={selected ? true : false}
+                key={seatNum}
             >{seatNum}</Button>
         );
     }

@@ -4,40 +4,47 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
 
 class SeatButton extends Component {
+     constructor(props) {
+        super(props);
     
     state = {
-        selected: false
-        // selected: this.props.occupied
+        selected: false,
+        disabled: false
     }
 
 
     clicked = () => {
         console.log("clicked yo");
         this.setState({
-            selected: !this.state.Selected
+            selected: !this.state.Selected,
         })
+        this.props.deactivateSeats();
     };
+
+    unclicked = () => {
+        this.setState({
+            selected: this.state.Selected
+        })
+        this.props.deactivateSeats();
+    }
 
 
 
     render() {
-        const { seat, occupied, margin } = this.props; 
+        const { seat, occupied, margin, row, deactivateSeats } = this.props; 
         const { selected } = this.state;
-        console.log(this.state.selected);
-        
-        /*onClick={this.onSelectClick()}*/
-    
+        console.log("selected",this.state.selected);
+        var seatNum = seat + row.toString();
 
         return(
             <Button
                 className="select"
-                size="md"
                 color={selected ? "danger" : (occupied ? "primary" : "secondary") }
-                disabled={occupied ? true : false}
-                style={{marginRight: margin ? 10 : 0}}
-                onClick={this.clicked}
+                disabled={deactivateSeats ? false : (occupied ? true : false)}
+                style={{marginRight: margin ? 15 : 0}}
+                onClick={selected ? this.unclicked : this.clicked}
                 active={selected ? true : false}
-            >{seat}</Button>
+            >{seatNum}</Button>
         );
     }
 

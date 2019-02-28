@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container, Button, ButtonGroup } from 'reactstrap';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import './App.css';
@@ -10,36 +11,18 @@ import uuid from 'uuid';
 class App extends Component {
   constructor(props) {
     super(props);
+    // this.deactivateSeats = this.deactivateSeats.bind(this);
     this.state = {
-      oldData: [[
-          {id:uuid(), seat:"A", row:1, class:"First", occupied:false },
-          {id:uuid(), seat:"B", row:1, class:"First", occupied:false },
-          {id:uuid(), seat:"D", row:1, class:"First", occupied:true },
-          {id:uuid(), seat:"E", row:1, class:"First", occupied:false }
-      ],
-      [
-          {id:uuid(), seat:"A", row:2, class:"First", occupied:false },
-          {id:uuid(), seat:"B", row:2, class:"First", occupied:false },
-          {id:uuid(), seat:"C", row:2, class:"First", occupied:true },
-          {id:uuid(), seat:"E", row:2, class:"First", occupied:false },
-          {id:uuid(), seat:"F", row:2, class:"First", occupied:true },
-          {id:uuid(), seat:"G", row:2, class:"First", occupied:false }
-      ],
-      [
-          {id:uuid(), seat:"A", row:1, class:"First", occupied:false },
-          {id:uuid(), seat:"B", row:1, class:"First", occupied:false },
-          {id:uuid(), seat:"D", row:1, class:"First", occupied:true },
-          {id:uuid(), seat:"E", row:1, class:"First", occupied:false }
-      ],
-      [
-          {id:uuid(), seat:"A", row:2, class:"First", occupied:false },
-          {id:uuid(), seat:"B", row:2, class:"First", occupied:false },
-          {id:uuid(), seat:"D", row:2, class:"First", occupied:true },
-          {id:uuid(), seat:"E", row:2, class:"First", occupied:false }
-      ]],
       seatRow: [],
+      deactivateSeats: false
     };
   }
+
+  deactivateSeats = () => {
+    this.setState({
+      deactivateSeats: !this.state.deactivateSeats
+    })
+  };
 
   componentDidMount() {
     var initialArray = [];
@@ -72,13 +55,23 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <h1>Select a Seat</h1>
-        {this.state.oldData.map((row) => (
-          <SeatRow row={row}/>
-        ))}
-        <h1>Actual data</h1>
+        <h1>Welcome to Air Lola</h1>
+        <h2>Please pick a seat</h2>
+        <Button
+          size="lg" 
+          color="secondary"
+          disabled="true">Available</Button>
+        <Button
+          size="lg" 
+          color="primary"
+          disabled="true">Occupied</Button>
+          <Button
+          size="lg" 
+          color="danger"
+          disabled="true">Selected</Button>
+        <h2></h2>
         {this.state.seatRow.map((row) => (
-          <SeatRow row={row}/>
+          <SeatRow row={row} deactivateSeats={this.deactivateSeats.bind(this)}/>
         ))}
       </div>
     );

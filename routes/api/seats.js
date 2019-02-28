@@ -9,7 +9,7 @@ const Seat = require("../../models/Seat");
 // @access Public 
 router.get('/', (req, res) => {
     Seat.find()
-        .sort({ row: 1})
+        .sort({ row: 1, seat: 1})
         .then(seats => res.json(seats))
 });
 
@@ -17,6 +17,16 @@ router.get('/', (req, res) => {
 // @desc create a seat 
 // @access Public 
 router.post('/', (req, res) => {
+
+    // const seats = req.body.map((seat) => {
+    //     return new Seat({
+    //         seat: seat.seat,
+    //         row: seat.row,
+    //         class: seat.class,
+    //         occupied: seat.occupied
+    //     });
+    // });
+
     const newSeat = new Seat({
         seat: req.body.seat,
         row: req.body.row,

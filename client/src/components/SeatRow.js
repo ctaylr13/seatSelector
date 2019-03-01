@@ -3,7 +3,7 @@ import SeatButton from './SeatButton';
 
 class SeatRow extends Component {
     render() {
-        const { row, deactivateSeats } = this.props;
+        const { row, selectSeatFunction, selectedSeat } = this.props;
         
         return(
             <div>
@@ -11,15 +11,15 @@ class SeatRow extends Component {
                     if(seat.class === "Business" || seat.class === "First") {
                         if ((index + 1) === row.length / 2) {
                             return (
-                                <SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} margin={true} deactivateSeats={deactivateSeats}/>
+                                <SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} margin={true} selectSeatFunction={selectSeatFunction} selectedSeat={selectedSeat}/>
                             )
                         }   
-                        return (<SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} deactivateSeats={deactivateSeats}/>) 
+                        return (<SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} selectSeatFunction={selectSeatFunction} selectedSeat={selectedSeat}/>) 
                     } else {
                         if(seat.seat === "B" || seat.seat === "G"){
-                            return (<SeatButton  key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} margin={true} deactivateSeats={deactivateSeats}/>)
+                            return (<SeatButton  key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} margin={true} selectSeatFunction={selectSeatFunction} selectedSeat={selectedSeat}/>)
                         }
-                        return (<SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} deactivateSeats={deactivateSeats}/>) 
+                        return (<SeatButton key={seat.seat + seat.row.toString()} seat={seat.seat} occupied={seat.occupied} row={seat.row} selectSeatFunction={selectSeatFunction} selectedSeat={selectedSeat}/>) 
                     }
 
                     

@@ -13,13 +13,13 @@ class App extends Component {
     // this.deactivateSeats = this.deactivateSeats.bind(this);
     this.state = {
       seatRow: [],
-      deactivateSeats: false
+      selectedSeat: null
     };
   }
 
-  deactivateSeats = () => {
+  selectSeat = (seatNum) => {
     this.setState({
-      deactivateSeats: !this.state.deactivateSeats
+      selectedSeat: seatNum
     })
   };
 
@@ -69,7 +69,7 @@ class App extends Component {
           disabled={true}>Selected</Button>
         <br></br>
         {this.state.seatRow.map((row) => (
-          <SeatRow row={row} deactivateSeats={this.deactivateSeats.bind(this)}/>
+          <SeatRow row={row} selectSeatFunction={this.selectSeat.bind(this)} selectedSeat={this.state.selectedSeat} />
         ))}
       </div>
     );

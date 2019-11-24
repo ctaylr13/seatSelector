@@ -10,7 +10,6 @@ import SeatRow from "./components/SeatRow";
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.deactivateSeats = this.deactivateSeats.bind(this);
     this.state = {
       seatRow: [],
       selectedSeat: null
